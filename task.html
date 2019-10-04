@@ -1,0 +1,39 @@
+function Student(name, age, semester) {
+    this.name = name
+    this.age = age
+    this.semester = semester
+    Object.defineProperty(this, 'displayInfo', {
+        get: function() {
+            return `My name is ${this.name}. I am ${this.age} years old. I am in ${this.semester} semester`
+        }
+    })
+}
+
+std1 = new Student('ali', 24, 8)
+std2 = new Student('khan', 22, 6)
+std3 = new Student('umer', 21, 5)
+
+
+Student.prototype.program = 'bscs'
+
+
+console.log(std1.displayInfo)
+console.log(std2.displayInfo)
+console.log(std3.displayInfo)
+
+
+var arr = [std1, std2, std3]
+var arrLength = arr.length
+
+const displayUserSearch = () => {
+    var userInput = prompt('Enter the property related to Student')
+    for(i=0; i< arrLength; i++) {
+        if(arr[i].hasOwnProperty(userInput)) {
+            console.log(arr[i][userInput])
+        }else {
+            console.log(`${userInput} property is not available for Student`)
+            break
+        }
+    }
+}
+displayUserSearch()
